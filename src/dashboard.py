@@ -2,11 +2,13 @@ import streamlit as st
 
 from queries import (
     get_dashboard_metrics,
-    get_most_needed_roles
+    get_most_needed_roles,
+    get_jobs_by_area
 )
 
 from visualisations import (
-    plot_most_needed_roles
+    plot_most_needed_roles,
+    plot_top_locations
 )
 
 from database import create_connection

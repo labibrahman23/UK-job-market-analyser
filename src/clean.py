@@ -127,12 +127,12 @@ def find_skills(df):
     """
 
 
-    technical_skills = ['Develop', 'team', 'analyse', 'development','Engineer','Lead','python', 'sql', 'java', 'aws', 'docker', 'kubernetes', 'machine learning', 'pandas']
-
+    technical_skills = ['python', 'sql', 'java', 'aws', 'docker', 'kubernetes', 'machine learning', 'pandas']
+    
     def create_list(singular_description):
         skills_found = []
         for skill in technical_skills:
-            if skill in singular_description:
+            if skill.lower() in singular_description.lower():
                 skills_found.append(skill)
 
         return skills_found
