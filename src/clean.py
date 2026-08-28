@@ -223,6 +223,8 @@ def clean_data(df):
 
     """
 
+    df = df.drop_duplicates(subset="id")
+
     df = fill_null_values(df)
     
 

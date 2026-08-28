@@ -7,9 +7,10 @@ from database import load_csv_to_postgres
 
 
 # Download raw data
-"""download_data()
+print("Downloading data")
+download_data()
 print("Data downloaded successfully")
-"""
+
 
 # Load raw data
 df = pd.read_csv("data/raw/data.csv")

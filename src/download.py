@@ -11,7 +11,7 @@ def download_data():
 
     jobs = []
 
-    for i in range(1,11):
+    for i in range(1,100):
         url = f"https://api.adzuna.com/v1/api/jobs/gb/search/{i}?app_id={API_ID}&app_key={API_KEY}&results_per_page=100&category=it-jobs"
 
         response = requests.get(url)
