@@ -14,17 +14,17 @@ warnings.filterwarnings('ignore')
 df = pd.read_csv("data/cleaned/data.csv")
 df = df.dropna(subset=['salary_max'])
 
-print(df['location'][115:120])
+
 
 train_df = df.copy()
 
 #Target variables are seperated from independent variables
-X = df[['contract_type','job_category','skills']]
+X = df[['job_category', 'contract_type']]
 
-print("varibales: contract_type, job_category, skills")
-# job_category', 'contract_type','skills','location'
+#print("varibales: contract_type, job_category, skills, region")
+# job_category', 'contract_type','skills','location_region'
 
-y = df['salary_max']
+y = df['average_salary']
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y,
@@ -32,11 +32,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     random_state=42
 )
 
-independent_variables = [
-    'contract_type',
-    'job_category',
-    'skills'
-    ]
+independent_variables = ['job_category', 'contract_type' ]
 
 
 categorical_pipeline = Pipeline([
@@ -79,6 +75,11 @@ R2: 0.03089077719848765
 Independent variables: job_category
 MSE: 1192605627.4028146
 R2: 0.04891685279882585
+
+
+Independent variables: location_region
+MSE: 904,953,051.6975726
+R²: 0.05016847032921912
 
 Independent variables: skills
 MSE: 1251104103.3580492
