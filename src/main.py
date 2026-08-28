@@ -42,11 +42,14 @@ else:
             "salary_is_predicted",
             "company",
             "id",
-            "created",
             "contract_time",
             "contract_type",
             "skills",
-            "job_category"
+            "job_category",
+            "location_region",
+            "average_salary",
+            "created_month",
+            "created_year"
         ]
     ]
 
@@ -57,6 +60,7 @@ else:
     )
 
     print("Cleaned data saved to CSV")
+
 
 
 # Load cleaned data into PostgreSQL

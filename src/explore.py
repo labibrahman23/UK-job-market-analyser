@@ -1,5 +1,5 @@
 import random as rand
-
+import pandas as pd
 
 def get_sample(df):
     """Print a random sample of 5 rows."""
@@ -38,3 +38,11 @@ def main(df):
     print(df.columns.tolist())
 
     get_column_sample(df)
+
+data_set = input("Do you want to sample raw or cleaned data")
+if data_set.lower() == "raw":
+    df = pd.read_csv("data/raw/data.csv")
+else:
+    df = pd.read_csv("data/cleaned/data.csv")
+
+main(df)

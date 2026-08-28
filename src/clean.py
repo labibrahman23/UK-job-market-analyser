@@ -51,18 +51,40 @@ def clean_company(df):
     """
     return df
 
-def clean_location(df):
+def create_location_region(df):
 
     """
-        Clean the location column to only contain city name
-        Convert the str to dictionary data type
-        Pull value using the display_name key
-        Save the location column as only display_name
+        Clean the location column to only contain region
+
         
     """
 
-    df['location'] = df['location'].apply(ast.literal_eval)
-    df['location'] = df['location'].apply(lambda x: x.get('display_name'))
+    regions = [
+        "London",
+        "South East",
+        "South West",
+        "East of England",
+        "West Midlands",
+        "East Midlands",
+        "North West",
+        "North East",
+        "Yorkshire and the Humber",
+        "Wales",
+        "Scotland",
+        "Northern Ireland"
+        ]
+
+    def get_location(location):
+            if pd.isna(location):
+                return pd.NA
+            
+            for region in regions:
+                if region.lower().strip() in location.lower().strip():
+                    return region
+    
+            return pd.NA
+    
+    df['location_region'] = df['location'].apply(get_location)
 
     return df
 
@@ -104,6 +126,7 @@ def round_longitude_latitude(df):
 def convert_created(df):
     """
         Convert created to datetime data type
+        Create year and month column
         
         
     """
@@ -111,7 +134,11 @@ def convert_created(df):
 
     """Reference: https://stackoverflow.com/questions/38060172/convert-string-date-to-a-different-format-in-pandas-dataframe """
 
-    df['created'] = pd.to_datetime(df['created']).dt.date
+    df['created'] = pd.to_datetime(df['created'])
+    df['created_year'] = df['created'].dt.year
+    df['created_month'] = df['created'].dt.month
+
+    df = df.drop('created', axis=1)
     
     return df
 
@@ -140,6 +167,13 @@ def find_skills(df):
     df['skills'] = df['description'].apply(create_list)
 
         
+    return df
+
+
+def create_average_salary(df):
+
+    df['average_salary'] = (df['salary_max'] + df['salary_min']) / 2 
+
     return df
 
 def find_job_categories(df):
@@ -229,18 +263,21 @@ def clean_data(df):
     
 
     df = drop_columns(df)
+
     
 
     df = clean_company(df)
     
 
-    df = clean_location(df)
+    df = create_location_region(df)
     
 
     df = convert_salary_predicted(df)
   
 
     df = round_longitude_latitude(df)
+
+    df = create_average_salary(df)
     
 
     df = convert_created(df)
