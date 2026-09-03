@@ -1,6 +1,6 @@
 from dash import Dash, html, dcc, dash_table
-from src.database import create_connection
-from src.queries import (
+from src.data_processing.database import create_connection
+from src.data_analysis.queries import (
     get_dashboard_metrics,
     get_most_needed_roles,
     get_average_salary,
@@ -8,7 +8,7 @@ from src.queries import (
     get_jobs_by_area,
     get_skill_analysis
 )
-from src.visualisations import(
+from src.data_analysis.visualisations import(
     plot_most_needed_roles,
     plot_top_companies,
     plot_top_locations
