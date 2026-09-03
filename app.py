@@ -41,17 +41,14 @@ top_locations_graph = plot_top_locations(df_top_locations)
 app.layout = html.Div([
 
     html.H1("UK Tech Job Market Dashboard"),
-
-    # This is the first horizontal layer 
-
     
 
     html.Div([
 
-        # Create the left column, with the metrics
+        # metrics
         html.Div([
 
-            # Create metrics, the overview,
+            # overview,
             html.Div([
 
                 html.H3("Overview"),
@@ -94,7 +91,7 @@ app.layout = html.Div([
 
             ]),
 
-            # Create a tale with the averge salary per role, 
+            # average salary per role
             html.Div([
 
                 html.H3(
@@ -149,7 +146,7 @@ app.layout = html.Div([
             "width": "35%"
         }),
 
-        # Create the right side graph ( most needed jobs ), 
+        # most needed jobs
         html.Div([
 
             html.H3("Most Demanded Job Roles"),
@@ -172,11 +169,11 @@ app.layout = html.Div([
     }),
 
 
-    # Second horizontal layer, top hiring companies, and top locations
+    # top hiring companies and top locations
 
     html.Div([
 
-        # Top hiring companies
+        # top hiring companies
         html.Div([
 
             html.H3("Top Hiring Companies"),
@@ -192,7 +189,7 @@ app.layout = html.Div([
             "width": "50%"
         }),
 
-        # Top locations
+        # top locations
         html.Div([
 
             html.H3("Top Locations"),
@@ -215,7 +212,7 @@ app.layout = html.Div([
     }),
 
 
-    # Third horizontal layer is skills analysis
+    # skills 
 
     html.Div([
 

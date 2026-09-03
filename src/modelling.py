@@ -18,11 +18,7 @@ df = df.dropna(subset=['salary_max'])
 
 train_df = df.copy()
 
-#Target variables are seperated from independent variables
 X = df[['job_category', 'contract_type']]
-
-#print("varibales: contract_type, job_category, skills, region")
-# job_category', 'contract_type','skills','location_region'
 
 y = df['average_salary']
 
@@ -105,7 +101,7 @@ R2: 0.05745780948076207
 """
 """Referencing
 https://www.geeksforgeeks.org/machine-learning/random-forest-regression-in-python/ 
-https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html?utm_source=chatgpt.com 
+https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html?
 https://www.geeksforgeeks.org/machine-learning/ml-one-hot-encoding/ 
 https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html 
 https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html

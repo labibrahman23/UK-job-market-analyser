@@ -3,11 +3,11 @@ import pandas as pd
 
 def get_dashboard_metrics(connection):
 
-    """Create a dataframe of dashboard metrics including:
-    Number of jobs analysed
-    Number of unique companies which were analysed
-    Average Salary overall
-    Number of unique locations analysed"""
+    """createa a dataframe of dashboard metrics including:
+     -number of jobs analysed
+     -number of unique companies which were analysed
+     -average Salary overall
+     -number of unique locations analysed"""
 
     query = """
     SELECT COUNT(*) AS number_of_jobs, COUNT(DISTINCT(company)) AS number_of_companies, AVG((salary_max + salary_min) / 2) AS average_salary, COUNT(DISTINCT(location)) AS locations
@@ -43,7 +43,7 @@ def get_average_salary(connection):
     """ 
     Create a dataframe of average salary per role, using previous most_needed_job roles
     This creates average salaries for the top 10 most needed job roles
-    Using .loc to take the columns from previous data frame
+    Using .loc to take the columns from the previous data frame
     """
     df = get_most_needed_roles(connection)
 
@@ -72,7 +72,7 @@ def get_jobs_by_area(connection):
     
     """Get the number of jobs by area
     Using ILIKE, match jobs with top 5 cities and other
-    REFERENCNG : https://www.datacamp.com/doc/postgresql/ilike
+    ""
     Group the records which have the same cities together and get the count of each city
     """
     query = """
@@ -105,6 +105,11 @@ def get_jobs_by_area(connection):
     ORDER BY number_of_vacancies DESC;
     """
 
+    """
+     REFERENCNG : https://www.datacamp.com/doc/postgresql/ilike
+        https://stackoverflow.com/questions/62969613/conditional-case-and-like-ilike 
+        """
+
     return pd.read_sql(query, connection)
 
 def get_skill_analysis(connection):
@@ -112,7 +117,6 @@ def get_skill_analysis(connection):
     """
     Get the top skills
     Using ILIKE, skills with top skills which are commonly needed
-    REFERENCNG : https://www.datacamp.com/doc/postgresql/ilike
     Group the records which have the same skills needed together
     Get the number of each group
     Create a perctanage of job market column by rounding and calculating percentage ( group total / total job maret)

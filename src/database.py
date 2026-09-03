@@ -11,9 +11,11 @@ def create_connection():
     database=("uk_job_market_data"),
     user=("postgres"),
     password=("LabibDataProjects")
-        )
+    )
 
     return connection
+
+
 
 
 

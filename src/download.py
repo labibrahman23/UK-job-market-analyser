@@ -47,6 +47,8 @@ def download_data():
 
     
 
+
 """
+DATA SOURCE: 
 https://api.adzuna.com/v1/api/jobs/gb/search/1?app_id=fc9a8b18&app_key=0c4a5a30ec2959e61c8f9eeecd99c9c7&results_per_page=100&category=it-jobs 
 """

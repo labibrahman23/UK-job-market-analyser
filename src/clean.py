@@ -1,14 +1,12 @@
-
 import pandas as pd
 import ast
-from datetime import datetime, timezone
 import numpy as np
 
 def fill_null_values(df):
     """ 
-        Replace Null values with appropriate place holder
-        For Numerical values, use NaN
-        For text values, use Unkown
+        Replace null values with appropriate place holder
+        for numerical values, use NaN
+        for text values, use Unkown
     """
 
     df['longitude'] = df['longitude'].fillna((np.nan))
@@ -24,7 +22,7 @@ def drop_columns(df):
 
     """     
         Drop Uncessesary columns
-        __CLASS__ and Category column 
+        __CLASS__ , category and adref
     """
 
     df = df.drop(columns= ['__CLASS__','category','adref'])
@@ -46,6 +44,7 @@ def clean_company(df):
 
 
     """Reference
+    https://stackoverflow.com/questions/35711059/extract-dictionary-value-from-column-in-data-frame? 
     https://stackoverflow.com/questions/52232742/how-to-use-ast-literal-eval-in-a-pandas-dataframe-and-handle-exceptions 
     https://www.geeksforgeeks.org/python/python-program-to-create-a-dictionary-from-a-string/ 
     """
@@ -55,6 +54,7 @@ def create_location_region(df):
 
     """
         Clean the location column to only contain region
+        Match location against a list of pre-determined regions
 
         
     """
@@ -132,7 +132,7 @@ def convert_created(df):
     """
     
 
-    """Reference: https://stackoverflow.com/questions/38060172/convert-string-date-to-a-different-format-in-pandas-dataframe """
+    """Reference: https://stackoverflow.com/questions/25146121/extracting-just-month-and-year-separately-from-pandas-datetime-column?"""
 
     df['created'] = pd.to_datetime(df['created'])
     df['created_year'] = df['created'].dt.year
@@ -185,52 +185,57 @@ def find_job_categories(df):
         Search a title for each job in list,
         Apply to entire column, adding findings to job_category column
 
+        LIST OF JOB CATEGORIES - seperated by job title, most common titles matched against role
+
     """
 
 
     job_categories = {
         # Software
         "developer": "Software Engineering",
-        
         "software": "Software Engineering",
-        "python": "Software Engineering",
-        "qa": "Software Engineering",
+        "computer programmer": "Software Engineering",
+        "full-stack": "Software Engineering",
+        "front-end": "Software Engineering",
+        "back-end": "Software Engineering",
+        "web developer": "Software Engineering",
+        "application developer": "Software Engineering",
         "programmer": "Software Engineering",
 
-        # Data / AI
+
         "data engineer": "Data Engineering",
+        "data architect": "Data Engineering",
         "data scientist": "Data Science",
+
         "data analyst": "Data Analytics",
+        "business intelligence": "Data Analytics",
+        "financial analyst": "Data Analytics",
+        "risk data": "Data Analytics",
+        "operations analyst": "Data Analytics",
+        "reporting analyst": "Data Analytics",
+        "market analyst": "Data Analytics",
+        "market research": "Data Analytics",
         "business intelligence": "Data Analytics",
         "machine learning": "AI/ML",
         "ai": "AI/ML",
 
-        # Cloud / Infrastructure
         "cloud": "Cloud Engineering",
         "devops": "DevOps",
         "infrastructure": "Infrastructure",
         "systems": "Systems Engineering",
         "network": "Network Engineering",
 
-        # Security
         "security": "Cyber Security",
         "cyber": "Cyber Security",
-
-        # Management
         "manager": "Management",
         "director": "Management",
         "lead": "Leadership",
         "architect": "Architecture",
-
         "engineer": "Software Engineering",
-        
-        # Support
         "support": "Technical Support",
         "consultant": "Consulting",
-        
-        # Project
         "project": "Project Management",
-
+        "python": "Software Engineering"
     }
 
 
@@ -291,7 +296,11 @@ def clean_data(df):
 
 
 """References:
-https://www.trymito.io/excel-to-python/functions/text/TRIM 
+
+ https://stackoverflow.com/questions/35711059/extract-dictionary-value-from-column-in-data-frame? 
+ https://stackoverflow.com/questions/52232742/how-to-use-ast-literal-eval-in-a-pandas-dataframe-and-handle-exceptions 
+ https://www.geeksforgeeks.org/python/python-program-to-create-a-dictionary-from-a-string/ 
+ https://www.trymito.io/excel-to-python/functions/text/TRIM 
 
 https://stackoverflow.com/questions/36226083/how-to-find-which-columns-contain-any-nan-value-in-pandas-dataframe 
 

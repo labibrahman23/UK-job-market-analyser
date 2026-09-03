@@ -77,13 +77,13 @@ def check_columns(df):
     columns = df.columns.tolist()
 
     if 'category' in columns:
-        errors.append("Category is still present")
+        errors.append("Category was not deleted")
 
     if '__CLASS__' in columns:
-        errors.append("__CLASS__ is still present")
+        errors.append("__CLASS__ was not deleted")
 
     if 'adref' in columns:
-        errors.append("adref is still present")
+        errors.append("adref was not deleted")
 
     if 'skills' not in columns:
         errors.append("Skills not found")
