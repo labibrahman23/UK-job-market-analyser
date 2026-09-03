@@ -82,37 +82,72 @@ I then trained a random forest regression model, with the data to see if job cha
 
 # Requirements
 - Python
-- PostgreSQL, (pgadmin4)
+- PostgreSQL 
+- pgadmin4 if you choose to use this ( easiest method) 
+- Git
 
 1. Clone repository\
+Run in terminal : \
 git clone https://github.com/labibrahman23/uk-job-market-analyser_new \
-cd New_UK_job_market\
+cd uk-job-market-analyser_new
 
 2. Create virtual environment\
+Run in terminal : \
 python -m venv .venv \
-.venv\Scripts\activate\
+.venv\Scripts\Activate.ps1 \
+if this doesnt work run \
+.venv\Scripts\activate\ 
 
 3. Install requirements\
-pip install -r requirements.txt
+Make sure you are in the current dictionary\
+Run in terminal : \
+cd uk-job-market-analyser_new\
+pip install -r requirements.txt\
+
+This may take a few minutes\
+
 
 4. Setup postgreSQL database\
     **Create database**\
-    Open pgAdmin, go to servers - postgreSQL - databases\
-    Right click databases and click createa database\
-        database name is uk_tech_job_data\
-        click save\\
-    **Save credentials to .env**\
-    run    New-Item .env -ItemType File    in terminal\
-    open .env file and paste in:\
-        DB_HOST=localhost\
-        DB_PORT=5432\
-        DB_NAME=uk_tech_job_data\
-        DB_USER=postgres\
-        DB_PASSWORD=your_password\ 
+    If you are using pgadmin\
+    1. Open postgreSQL installer and create memorable passowrd, port 5432 ( if not already done), then install\
+    2. Open PGadmin4 click add new server (Server name can be anything)\
+    3. Click connection tab and set host name to localhost\
+    4. change password to your pg admin password and press save\
+    5. You do not need to install extra dependcies such as device driver you can press cancel, close pg admin and re open it\
+    6. On the lefy you should see your server, click the arrow to expand, right click databases and click create new database\
+    7. Set database name to uk_tech_job_data and owner as postgres and press save
+    
+    **Save credentials**\
+
+    1. open src / data_processing / database.py\
+    2. Change password to your password in\
+    connection = psycopg2.connect(\
+    host=("localhost"),\
+    port=("5432"),\
+    database=("uk_job_market_data"),\
+    user=("postgres"),\
+    password=("LabibDataProjects")\
+    ) \
+
+5. Create folder to save data\
+In the terminal run: \
+cd uk-job-market-analyser_new\
+mkdir data\
+mkdir data\cleaned\
+mkdir data\raw\
+
+6. 
+
+
+I NEED TO ADD DATA FOLDER WITH RAW AND CLEANED AND SAVE IT TO GITHUB
+I NEED TO ADD create_data.sql and load_data.sql to data and save it github
+
 
 
 5. Run main.py\
 Run python src/data_processing/main.py in terminal\
+It should say downloading data and this may take 5 minutes
 
 Do not commit raw data or cleaned data to github after this\
 

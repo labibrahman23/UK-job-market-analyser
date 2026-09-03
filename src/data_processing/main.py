@@ -7,9 +7,9 @@ from database import load_csv_to_postgres
 
 
 # download raw data
-print("Downloading data")
+print("downloading data")
 download_data()
-print("Data downloaded successfully")
+print("data downloaded successfully")
 
 
 # load raw data
