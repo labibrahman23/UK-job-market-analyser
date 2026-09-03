@@ -163,9 +163,6 @@ This presentation includes:
 
 
     
-    
-├── UK_job_market/
-│
 ├── pictures/                         <-contains sql methods for queriying database
 │
 ├── src/                              <- Source code for the project
@@ -196,6 +193,8 @@ This presentation includes:
 ├── app.py                            <- Builds the Dash dashboard using analysis methods ( visualsations and queries)
 │
 └── requirements.txt                  <-  requirements needed to run the project
+
+
 
 
 
