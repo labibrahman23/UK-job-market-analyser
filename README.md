@@ -106,6 +106,9 @@ Dashboard workflow:
 - Layer 3
     - Analyse skills, with average salaries, percentage of job market and number of vacancies 
 
+![Layer 1 ][pictures/layer1.png]
+![Layer 2 ][pictures/layer2.png]
+![Layer 3 ][pictures/layer3.png]
 
 
 
@@ -141,6 +144,10 @@ This presentation includes:
  - Critiques of the model 
  - Overall evaluation of experiment
 
+![Introduction][pictures/1Introduction.png]
+![Usage][pictures/2.Usefullness.png]
+![Solution][pictures/3.Solution.png]
+![Evaluation][pictures/4Evaluation.png]
 
 # Key findings
 - Software engineering is the most in demand job role with around 25% of the this dataset
@@ -151,6 +158,8 @@ This presentation includes:
 - Using the current data predicting salaries is not accurate, however there are signs showing it could be more accurate if better features were used to train the model
 
 # Project structure
+
+
 
 # How to run
 
