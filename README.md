@@ -85,25 +85,34 @@ I then trained a random forest regression model, with the data to see if job cha
 - PostgreSQL, (pgadmin4)
 
 1. Clone repository
-git clone https://github.com/labibrahman23/uk-job-market-analyser_new 
-cd New_UK_job_market
+git clone https://github.com/labibrahman23/uk-job-market-analyser_new \
+cd New_UK_job_market\
 
 2. Create virtual environment
-python -m venv .venv
-.venv\Scripts\activate
+python -m venv .venv \
+.venv\Scripts\activate\
 
 3. Install requirements
 pip install -r requirements.txt
 
 4. Setup postgreSQL database
-Createa postgreSQL database ( could use pg admin4 ) and save these details to .env file 
-DB_HOST=localhost 
-DB_PORT=5432 
-DB_NAME=uk_job_market_data
-DB_USER=postgres DB_PASSWORD=your_password
+    Create database\
+    Open pgAdmin, go to servers - postgreSQL - databases\
+    Right click databases and click createa database\
+        database name is uk_tech_job_data\
+        click save\\
+    Save credentials to .env\
+    run    New-Item .env -ItemType File    in terminal\
+    open .env file and paste in:
+        DB_HOST=localhost
+        DB_PORT=5432
+        DB_NAME=uk_tech_job_data
+        DB_USER=postgres
+        DB_PASSWORD=your_password 
+
 
 5. Run main.py
-Run python src/data_processing/main.py in terminal
+Run python src/data_processing/main.py in terminal\
 
 Do not commit raw data or cleaned data to github after this
 
@@ -111,7 +120,7 @@ Do not commit raw data or cleaned data to github after this
 Run python src/data_processing/main.py in terminal
 
 7. Run machine learning dashboard
-Run python src/modelling/presentation.py in terminal
+Run streamlit run src/modelling/presentation.py in terminal
 
 8. Optional, view machine learning model results
 Run python src/modelling/modelling.py in terminal
