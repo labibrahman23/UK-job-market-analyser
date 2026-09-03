@@ -49,8 +49,8 @@ I then trained a random forest regression model, with the data to see if job cha
 ## Project Structure
 
 
-    ├── LICENSE
-    ├── pictures                            contains sql methods for queriying database
+    ├── UK_job_market_analysis
+    ├── pictures                            contains pictures shown in github repository
     ├── src                                 source code for use in this project.
     │   ├── data_analysis
     │   │      ├── queries.py               SQL methods for querying database
@@ -79,6 +79,44 @@ I then trained a random forest regression model, with the data to see if job cha
 
 
 # How to run
+
+# Requirements
+- Python
+- PostgreSQL, (pgadmin4)
+
+1. Clone repository
+git clone https://github.com/labibrahman23/uk-job-market-analyser_new 
+cd New_UK_job_market
+
+2. Create virtual environment
+python -m venv .venv
+.venv\Scripts\activate
+
+3. Install requirements
+pip install -r requirements.txt
+
+4. Setup postgreSQL database
+Createa postgreSQL database ( could use pg admin4 ) and save these details to .env file 
+DB_HOST=localhost 
+DB_PORT=5432 
+DB_NAME=uk_job_market_data
+DB_USER=postgres DB_PASSWORD=your_password
+
+5. Run main.py
+Run python src/data_processing/main.py in terminal
+
+Do not commit raw data or cleaned data to github after this
+
+6. Run app.py
+Run python src/data_processing/main.py in terminal
+
+7. Run machine learning dashboard
+Run python src/modelling/presentation.py in terminal
+
+8. Optional, view machine learning model results
+Run python src/modelling/modelling.py in terminal
+
+
 
 # Data processing and feature engineering
 
