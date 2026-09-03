@@ -51,46 +51,30 @@ I then trained a random forest regression model, with the data to see if job cha
 
     ├── LICENSE
     ├── pictures          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── processed       <- Data from third party sources (ex. script config files)
-    │   └── raw        <- Intermediate data that has been transformed.
-    │       └── figures        <- Generated graphics and figures to be used in reporting
-    │  .
-    │
-    ├── docs               <- Documentation template with hints
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── {{ cookiecutter.module_name }}                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes {{ cookiecutter.module_name }} a Python module
+    ├── src                <- Source code for use in this project.
+    │   ├── data_analysis
+    │   │      ├── queries.py   <- Makes {{ cookiecutter.module_name }} a Python module
+    │   │      └── visualisations.py
+    │   ├── data_processing
+    │   │      ├── download.py               <- Downloads data from Adzuna API
+    │   │      ├── explore.py                <- Methods for exploring the dataset
+    │   │      ├── clean.py                  <- Methods for cleaning the data
+    │   │      ├── validation.py             <- Verifies that cleaning is completed correctly
+    │   │      ├── database.py               <- Creates a connection to the postgreSQL databas
+    │   │      └── main.py                   <- Runs entire data pipeline  
+    │   ├── modelling
+    │   │      ├── modelling.py              <- Trains and evaluates the Random Forest regression model
+    │   │      └── presentation.py           <- Streamlit dashboard presenting findings from experiment
+
+    ├── data                <- Source code for use in this project.
+    │   ├── cleaned
+    │   │      └── data.csv                  <- Cleaned data set used for SQL storage and training model
+    │   ├── raw
+    │   │    ├── data.json                 <- Raw data collected from the Adzuna API
+    │   │    └── data.csv                  <- Raw data converted from JSON  
     │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │                     predictions
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    |
-    ├── Dockerfile         <- Dockerfile with settings to run scripts in Docker container
-    ├── dvc.yaml           <- DVC pipeline; see dvc.org
-    ├── params.yaml        <- Parameter values (things like hyperparameters) used by DVC pipeline
-    ├── setup.cfg          <- config file with settings for running pylint, flake8 and bandit
-    └── pytest.ini         <- config file with settings for running pytest
+    ├── app.py           <- Builds the Dash dashboard using analysis methods ( visualsations and queries)
+    └── requirements.txt                  <-  requirements needed to run the project
 
 
 # How to run
