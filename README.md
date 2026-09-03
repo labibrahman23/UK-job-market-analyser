@@ -50,31 +50,32 @@ I then trained a random forest regression model, with the data to see if job cha
 
 
     ├── LICENSE
-    ├── pictures          <- The top-level README for developers using this project.
-    ├── src                <- Source code for use in this project.
+    ├── pictures                            contains sql methods for queriying database
+    ├── src                                 source code for use in this project.
     │   ├── data_analysis
-    │   │      ├── queries.py   <- Makes {{ cookiecutter.module_name }} a Python module
-    │   │      └── visualisations.py
+    │   │      ├── queries.py               SQL methods for querying database
+    │   │      └── visualisations.py        methods for creating visualisations
     │   ├── data_processing
-    │   │      ├── download.py               <- Downloads data from Adzuna API
-    │   │      ├── explore.py                <- Methods for exploring the dataset
-    │   │      ├── clean.py                  <- Methods for cleaning the data
-    │   │      ├── validation.py             <- Verifies that cleaning is completed correctly
-    │   │      ├── database.py               <- Creates a connection to the postgreSQL databas
-    │   │      └── main.py                   <- Runs entire data pipeline  
+    │   │      ├── download.py              Downloads data from Adzuna API
+    │   │      ├── explore.py               Methods for exploring the dataset
+    │   │      ├── clean.py                 Methods for cleaning the data
+    │   │      ├── validation.py            Verifies that cleaning is completed correctly
+    │   │      ├── database.py              Creates a connection to the postgreSQL databas
+    │   │      └── main.py                  Runs entire data pipeline  
     │   ├── modelling
-    │   │      ├── modelling.py              <- Trains and evaluates the Random Forest regression model
-    │   │      └── presentation.py           <- Streamlit dashboard presenting findings from experiment
+    │   │      ├── modelling.py             Trains and evaluates the Random Forest regression model
+    │   │      └── presentation.py          Streamlit dashboard presenting findings from experiment
 
-    ├── data                <- Source code for use in this project.
+    ├── data                                Data methods
     │   ├── cleaned
-    │   │      └── data.csv                  <- Cleaned data set used for SQL storage and training model
+    │   │      └── data.csv                 Cleaned data set used for SQL storage and training model
     │   ├── raw
-    │   │    ├── data.json                 <- Raw data collected from the Adzuna API
-    │   │    └── data.csv                  <- Raw data converted from JSON  
-    │   │
-    ├── app.py           <- Builds the Dash dashboard using analysis methods ( visualsations and queries)
-    └── requirements.txt                  <-  requirements needed to run the project
+    │   │    ├── data.json                  Raw data collected from the Adzuna API
+    │   │    └── data.csv                   Raw data converted from JSON  
+    │   └── create_table.sql                SQL used to create table 
+    │   └── load_data.sql                   SQL used to copy data to postgreSQL database
+    ├── app.py                              Builds the Dash dashboard using analysis methods ( visualsations and queries)
+    └── requirements.txt                    requirements needed to run the project
 
 
 # How to run
