@@ -159,6 +159,9 @@ This presentation includes:
 
 # Project structure
 
+## Project Structure
+
+
 ├── UK_job_market/
 │
 ├── pictures/                         <-contains sql methods for queriying database
@@ -190,7 +193,9 @@ This presentation includes:
 │
 ├── app.py                            <- Builds the Dash dashboard using analysis methods ( visualsations and queries)
 │
-└── requirements.txt                  <-  requirements needed to run the project
+└── requirements.txt                  <- requirements needed to run the project
+
+
 
 # How to run
 
