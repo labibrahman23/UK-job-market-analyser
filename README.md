@@ -158,33 +158,39 @@ This presentation includes:
 - Using the current data predicting salaries is not accurate, however there are signs showing it could be more accurate if better features were used to train the model
 
 # Project structure
-- Pictures
- - contains pictures for github repository
-- **src**
-    -**Data analysis**:
-        **queries.py** contains sql methods for queriying database
-        **visualisations.py** contains methods for creating visualisations
-    -**Data processing**:
-        **download.py** - downloades data from Adzuna API
-        **explore.py** - contains methods for exploring dataset
-        **clean.py** - contains methods for cleaning data
-        **validation.py** - contains methods which verify cleaning is completed correctly
-        **database.py** - creates connection to pg admin database
-        **main.py** - runs entire data pipeline
-    -**modelling**:
-        modelling.py - trains and evaluates random forest regression model using dataset
-        presentation.py - streamlit dashboard which presents findings from experiment
-- **data**
-    -**cleaned**:
-        **data.csv** - contains cleaned data set, saved to sql database and used in training model
-    -**raw**:
-        **data.csv** - contains raw data converted into csv from json
-        **data.json** - contains raw data collected from adzuna API
 
-**app.py** - Builds dash, dashboard using methods from data analysis ( visualisations and queries)
-**requirements.txt** - contains requirements needed to run project
-    
-
+├── UK_job_market/
+│
+├── pictures/                         <-contains sql methods for queriying database
+│
+├── src/                              <- Source code for the project
+│   ├── data_analysis/                <- Methods for analysing the database
+│   │   ├── queries.py                <- SQL methods for querying database
+│   │   └── visualisations.py         <- methods for creating visualisations
+│   │
+│   ├── data_processing/              <- Scripts for processing the dataset
+│   │   ├── download.py               <- Downloads data from Adzuna API
+│   │   ├── explore.py                <- Methods for exploring the dataset
+│   │   ├── clean.py                  <- Methods for cleaning the data
+│   │   ├── validation.py             <- Verifies that cleaning is completed correctly
+│   │   ├── database.py               <- Creates a connection to the postgreSQL database
+│   │   └── main.py                   <- Runs entire data pipeline
+│   │
+│   └── modelling/                    <- Machine learning scripts
+│       ├── modelling.py              <- Trains and evaluates the Random Forest regression model
+│       └── presentation.py           <- Streamlit dashboard presenting findings from experiment
+│
+├── data/                             <- Project datasets
+│   ├── cleaned/
+│   │   └── data.csv                  <- Cleaned data set used for SQL storage and training model
+│   │
+│   └── raw/
+│       ├── data.json                 <- Raw data collected from the Adzuna API
+│       └── data.csv                  <- Raw data converted from JSON
+│
+├── app.py                            <- Builds the Dash dashboard using analysis methods ( visualsations and queries)
+│
+└── requirements.txt                  <-  requirements needed to run the project
 
 # How to run
 
