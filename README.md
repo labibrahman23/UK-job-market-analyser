@@ -66,7 +66,7 @@ I then trained a random forest regression model, with the data to see if job cha
     │   │      ├── modelling.py             Trains and evaluates the Random Forest regression model
     │   │      └── presentation.py          Streamlit dashboard presenting findings from experiment
 
-    ├── data                                Data methods
+    ├── data                               Data methods (some files may not be present on github due to file size)
     │   ├── cleaned
     │   │      └── data.csv                 Cleaned data set used for SQL storage and training model
     │   ├── raw
@@ -78,87 +78,98 @@ I then trained a random forest regression model, with the data to see if job cha
     └── requirements.txt                    requirements needed to run the project
 
 
-# How to run
 
 # Requirements
 - Python
 - PostgreSQL 
-- pgadmin4 if you choose to use this ( easiest method) 
+- pgadmin4
 - Git
 
 1. Clone repository\
 Run in terminal : \
-git clone https://github.com/labibrahman23/uk-job-market-analyser_new \
-cd uk-job-market-analyser_new
+git clone https://github.com/labibrahman23/uk-job-market-analyser \
+cd uk-job-market-analyser
 
-2. Create virtual environment\
-Run in terminal : \
-python -m venv .venv \
-.venv\Scripts\Activate.ps1 \
-if this doesnt work run \
-.venv\Scripts\activate\ 
+2. (Optional but recommended) Create virtual environment\
+    Run in terminal : \
+    1. python -m venv .venv   or   py -m venv .venv\
+    2. .venv\Scripts\Activate.ps1   or  .venv\Scripts\activate
+    3. If this does not work you can move onto the next step
 
-3. Install requirements\
-Make sure you are in the current dictionary\
-Run in terminal : \
-cd uk-job-market-analyser_new\
-pip install -r requirements.txt\
-
-This may take a few minutes\
+3. Install requirements
+1. Make sure you are in the current dictionary
+2. Run in terminal : 
+3. cd uk-job-market-analyser
+4. pip install -r requirements.txt    or     py -m pip install -r requirements.txt\
+This may take a few minutes
 
 
 4. Setup postgreSQL database\
     **Create database**\
-    If you are using pgadmin\
-    1. Open postgreSQL installer and create memorable passowrd, port 5432 ( if not already done), then install\
-    2. Open PGadmin4 click add new server (Server name can be anything)\
-    3. Click connection tab and set host name to localhost\
-    4. change password to your pg admin password and press save\
-    5. You do not need to install extra dependcies such as device driver you can press cancel, close pg admin and re open it\
-    6. On the lefy you should see your server, click the arrow to expand, right click databases and click create new database\
-    7. Set database name to uk_tech_job_data and owner as postgres and press save
     
-    **Save credentials**\
+    1. Open postgreSQL installer and create memorable passowrd, port 5432 ( if not already done), then install
+    2. If stack builder opens after you can press cancel ( none of these are required )
+    2. Open PGadmin4 click add new server (server name can be anything)
+    3. Click connection tab and set host name to localhost
+    4. change password to your pg admin password and press save
+    5. You do not need to install extra dependcies such as device driver you can press cancel, close pg admin and re open it
+    6. On the lefy you should see your server, click the arrow to expand, right click databases and click create new database
+    7. Set database name to uk_tech_job_data and owner as postgres and press save
 
-    1. open src / data_processing / database.py\
+    **Create table**
+
+    1. Stay in pgAdmin4, right click the new database we made ( may have to expand databases to view)\
+    2. Select query tool paste the code below and press execute script ( the play button)\
+    3. CREATE TABLE uk_tech_job_data (\
+    description VARCHAR,\
+    title VARCHAR,\
+    salary_min DECIMAL,\
+    location VARCHAR,\
+    longitude DECIMAL,\
+    redirect_url VARCHAR,\
+    latitude DECIMAL,\
+    salary_max DECIMAL,\
+    salary_is_predicted BOOLEAN,\
+    company VARCHAR,\
+    id BIGINT,\
+    contract_time VARCHAR,\
+    contract_type VARCHAR,\
+    skills VARCHAR,\
+    job_category VARCHAR,\
+    location_region VARCHAR,\
+    average_salary DECIMAL,\
+    created_month INT,\
+    created_year INT\
+    );
+    
+    **Save credentials**
+
+    1. open src / data_processing / database.py
     2. Change password to your password in\
     connection = psycopg2.connect(\
     host=("localhost"),\
     port=("5432"),\
     database=("uk_job_market_data"),\
     user=("postgres"),\
-    password=("LabibDataProjects")\
-    ) \
-
-5. Create folder to save data\
-In the terminal run: \
-cd uk-job-market-analyser_new\
-mkdir data\
-mkdir data\cleaned\
-mkdir data\raw\
-
-6. 
-
-
-I NEED TO ADD DATA FOLDER WITH RAW AND CLEANED AND SAVE IT TO GITHUB
-I NEED TO ADD create_data.sql and load_data.sql to data and save it github
+    password=("YOUR PASSWORD")\
+    ) 
 
 
 
 5. Run main.py\
-Run python src/data_processing/main.py in terminal\
-It should say downloading data and this may take 5 minutes
-
-Do not commit raw data or cleaned data to github after this\
+    1. Make sure you are in cd uk-job-market-analyser
+    2. Run python src/data_processing/main.py   or    py src/data_processing/main.py  in terminal
+    3. It should say downloading data and this may take 5 minutes\
+    4. Do not commit raw data or cleaned data to github after this
 
 6. Run app.py\
-Run python src/data_processing/main.py in terminal\
+Run python src/data_processing/main.py  or   py src/data_processing/main.py in terminal
 
 7. Run machine learning dashboard\
-Run streamlit run src/modelling/presentation.py in terminal\
+Run streamlit run src/modelling/presentation.py in terminal
 
 8. Optional, view machine learning model results\
-Run python src/modelling/modelling.py in terminal\
+Run python src/modelling/modelling.py in terminal
 
 
 
@@ -276,4 +287,5 @@ This presentation includes:
 
 # Future improvemnts
  - Increase dataset to pull more job listings from Adzuna API
- - Use better feature engineering to createa 
+ - Use better feature engineering to create better parameters for machine learning model
+ - Find more useful insights for employers and employees
