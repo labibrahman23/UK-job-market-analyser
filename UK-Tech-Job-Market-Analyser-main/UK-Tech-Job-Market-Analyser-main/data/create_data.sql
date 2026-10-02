@@ -1,0 +1,21 @@
+CREATE TABLE uk_tech_job_data (
+    description VARCHAR,
+    title VARCHAR,
+    salary_min DECIMAL,
+    location VARCHAR,
+    longitude DECIMAL,
+    redirect_url VARCHAR,
+    latitude DECIMAL,
+    salary_max DECIMAL,
+    salary_is_predicted BOOLEAN,
+    company VARCHAR,
+    id BIGINT,
+    contract_time VARCHAR,
+    contract_type VARCHAR,
+    skills VARCHAR,
+    job_category VARCHAR,
+    location_region VARCHAR,
+    average_salary DECIMAL,
+    created_month INT,
+    created_year INT
+);
